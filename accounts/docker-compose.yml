@@ -12,7 +12,7 @@ services:
       - roadmaplearner
   loans:
     image: "roadmaplearner/loans:loans-V1"
-    container_name: accounts-ms
+    container_name: loans-ms
     ports:
       - "8090:8090"
     deploy:
@@ -23,7 +23,7 @@ services:
       - roadmaplearner
   cards:
     image: "roadmaplearner/cards:cards-V1"
-    container_name: accounts-ms
+    container_name: cards-ms
     ports:
       - "9000:9000"
     deploy:
