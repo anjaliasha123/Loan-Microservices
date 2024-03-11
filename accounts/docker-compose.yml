@@ -11,7 +11,7 @@ services:
     networks:
       - roadmaplearner
   loans:
-    image: "roadmaplearner/loans:loans-V1-V1"
+    image: "roadmaplearner/loans:loans-V1"
     container_name: accounts-ms
     ports:
       - "8090:8090"
@@ -22,7 +22,7 @@ services:
     networks:
       - roadmaplearner
   cards:
-    image: "roadmaplearner/cards:cards-V1-V1"
+    image: "roadmaplearner/cards:cards-V1"
     container_name: accounts-ms
     ports:
       - "9000:9000"
