@@ -55,13 +55,13 @@ public class AccountsController {
             description = "HTTP Status OK"
     )
     @GetMapping("/fetch")
-    public ResponseEntity<ResponseDto> fetchAccountDetails(@RequestParam
+    public ResponseEntity<CustomerDto> fetchAccountDetails(@RequestParam
                                                                @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile Number must be 10 digits")
                                                                String mobileNumber){
-        CustomerDto dto =  iAccountsService.fetchAccount(mobileNumber);
+        CustomerDto customerDto =  iAccountsService.fetchAccount(mobileNumber);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new ResponseDto(AccountsConstants.STATUS_200, AccountsConstants.MESSAGE_200));
+                .body(customerDto);
     }
     @Operation(
             summary = "Update account REST API",
