@@ -1,0 +1,14 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+build:
+  version: "1.0"
+accounts:
+  message: "Welcome to First Capital Bank accounts related Prod APIs"
+  contactDetails:
+    name: "Silver John - Product Owner"
+    email: "silverj124@gmail.com"
+  onCallSupport:
+    - (888) 555-1234
+    - (888) 523-1345
