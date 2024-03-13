@@ -1,6 +1,7 @@
 package com.anjali.springboot.accounts.controller;
 
 import com.anjali.springboot.accounts.constants.AccountsConstants;
+import com.anjali.springboot.accounts.dto.AccountsContactInfoDto;
 import com.anjali.springboot.accounts.dto.CustomerDto;
 import com.anjali.springboot.accounts.dto.ErrorResponseDto;
 import com.anjali.springboot.accounts.dto.ResponseDto;
@@ -14,6 +15,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +29,17 @@ import org.springframework.web.bind.annotation.*;
         description = "CRUD REST APIs to CREATE, DELETE, FETCH and UPDATE account details"
 )
 @RestController
-@AllArgsConstructor
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
 public class AccountsController {
+    @Autowired
     private IAccountsService iAccountsService;
+    @Value("${build.version}")
+    private String buildVersion;
+    @Autowired
+    private Environment environment;
+    @Autowired
+    private AccountsContactInfoDto accountsContactInfoDto;
     @Operation(
             summary = "Create account REST API",
             description = "REST API to create new customer and account"
@@ -127,5 +137,47 @@ public class AccountsController {
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE));
         }
+    }
+    @Operation(
+            summary = "Get build information",
+            description = "Get build information for account details"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK"
+    )
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(buildVersion);
+    }
+    @Operation(
+            summary = "Get java version",
+            description = "Get java version for account details"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK"
+    )
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(environment.getProperty("JAVA_HOME"));
+    }
+    @Operation(
+            summary = "Get contact info",
+            description = "Get contact info for account details"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK"
+    )
+    @GetMapping("/contact-info")
+    public ResponseEntity<AccountsContactInfoDto> getContactInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(accountsContactInfoDto);
     }
 }
