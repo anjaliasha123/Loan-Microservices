@@ -1,0 +1,10 @@
+build:
+  version: "1.0"
+cards:
+  message: "Welcome to First Capital Bank cards related Prod APIs"
+  contactDetails:
+    name: "Silver John - Product Owner"
+    email: "silverj124@gmail.com"
+  onCallSupport:
+    - (888) 555-1234
+    - (888) 523-1345

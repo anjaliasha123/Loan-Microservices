@@ -1,0 +1,10 @@
+build:
+  version: "2.0"
+loans:
+  message: "Welcome to First Capital Bank loans related QA APIs"
+  contactDetails:
+    name: "Dev Joe - QA Lead"
+    email: "dev@gmail.com"
+  onCallSupport:
+    - (555) 554-1234
+    - (555) 500-1348

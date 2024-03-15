@@ -1,11 +1,7 @@
-spring:
-  config:
-    activate:
-      on-profile: "prod"
 build:
   version: "1.0"
-cards:
-  message: "Welcome to First Capital Bank cards related Prod APIs"
+loans:
+  message: "Welcome to First Capital Bank loans related Prod APIs"
   contactDetails:
     name: "Silver John - Product Owner"
     email: "silverj124@gmail.com"

@@ -1,11 +1,7 @@
-spring:
-  config:
-    activate:
-      on-profile: "qa"
 build:
   version: "2.0"
-accounts:
-  message: "Welcome to First Capital Bank accounts related QA APIs"
+cards:
+  message: "Welcome to First Capital Bank cards related QA APIs"
   contactDetails:
     name: "Dev Joe - QA Lead"
     email: "dev@gmail.com"
