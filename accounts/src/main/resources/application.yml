@@ -4,29 +4,21 @@ spring:
   application:
     name: "accounts"
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: user
-    password: ''
-  h2:
-    console:
-      enabled: true
+    url: jdbc:mysql://localhost:3306/accountsdb
+    username: root
+    password: root
+  sql:
+    init:
+      mode: always
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: update
-      show-sql: true
+    show-sql: true
+
   profiles:
     active: "prod"
   config:
     import: "optional:configserver:http://localhost:8071/"
-build:
-  version: "3.0"
-accounts:
-  message: "Welcome to First Capital Bank accounts related local APIs"
-  contactDetails:
-    name: "John Doe - Developer"
-    email: "john@gmail.com"
-  onCallSupport:
-    - (555) 555-1234
-    - (555) 523-1345
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

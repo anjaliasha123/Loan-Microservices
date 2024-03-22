@@ -27,16 +27,13 @@ public class AccountsServiceImpl implements IAccountsService {
     @Override
     public void createAccount(CustomerDto customerDto) {
         Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
-        Optional<Customer> optionalCustomer = customerRepository.findByMobileNumber(customer.getMobileNumber());
-        if(optionalCustomer.isPresent()){
-            throw new CustomerAlreadyExistException("Customer already registered with given mobile number "
-            +customerDto.getMobileNumber());
+        Optional<Customer> optionalCustomer = customerRepository.findByMobileNumber(customerDto.getMobileNumber());
+        if(optionalCustomer.isPresent()) {
+            throw new CustomerAlreadyExistException("Customer already registered with given mobileNumber "
+                    +customerDto.getMobileNumber());
         }
-        customer.setCreatedAt(LocalDateTime.now());
-        customer.setCreatedBy("Default");
         Customer savedCustomer = customerRepository.save(customer);
-        Accounts newAccount = createNewAccount(savedCustomer);
-        accountsRepository.save(newAccount);
+        accountsRepository.save(createNewAccount(savedCustomer));
     }
     /**
      *
@@ -46,9 +43,9 @@ public class AccountsServiceImpl implements IAccountsService {
     private Accounts createNewAccount(Customer customer){
         Accounts newAccount = new Accounts();
         newAccount.setCustomerId(customer.getCustomerId());
-        long randomAccountNumber = 1000000000L + new Random().nextInt(900000000);
-        newAccount.setMobileNumber(customer.getMobileNumber());
-        newAccount.setAccountNumber(randomAccountNumber);
+        long randomAccNumber = 1000000000L + new Random().nextInt(900000000);
+
+        newAccount.setAccountNumber(randomAccNumber);
         newAccount.setAccountType(AccountsConstants.SAVINGS);
         newAccount.setBranchAddress(AccountsConstants.ADDRESS);
         return newAccount;
