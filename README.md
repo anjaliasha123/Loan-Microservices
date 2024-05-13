@@ -8,9 +8,6 @@ Microservices:
 <ol>
   <li>
     Accounts:
-    <ul>
-      
-    </ul>
   </li>
   <li>Loans:</li>
   <li>Cards:</li>
