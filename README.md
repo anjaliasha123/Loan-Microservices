@@ -4,6 +4,17 @@ This project aims at developing backend required by a new bank called "Capital F
 
 ![Loans Microservice](https://github.com/anjaliasha123/Loan-Microservices/assets/66244077/75efcf57-a7e3-4a80-86ad-02c920ff4f59)
 
+Microservices:
+<ol>
+  <li>
+    Accounts:
+    <ul>
+      
+    </ul>
+  </li>
+  <li>Loans:</li>
+  <li>Cards:</li>
+</ol>
 Dependencies usind inside Spring Microservices:
 <ul>
   <li>Spring Actuator</li>
