@@ -5,7 +5,7 @@ This project aims at developing backend required by a new bank called "Capital F
 ![Loans Microservice (1)](https://github.com/anjaliasha123/Loan-Microservices/assets/66244077/cfe978c2-6f70-4b36-813b-f51e2b0d06a3)
 
 
-Microservices:
+##Microservices:
 <ol>
   <li>
     Accounts:
@@ -13,11 +13,11 @@ Microservices:
   <li>Loans:</li>
   <li>Cards:</li>
 </ol>
-Entitites:
+##Entitites:
 Base Entities - createdAt, createdBy, updatedAt, updatedBy
 Customer Enitity - customerId, name, email, mobileNumber
 Accounts Enitity - 
-Dependencies usind inside Spring Microservices:
+##Dependencies usind inside Spring Microservices:
 <ul>
   <li>Spring Actuator</li>
   <li>Spring Web</li>
