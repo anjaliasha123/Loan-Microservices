@@ -13,10 +13,6 @@ This project aims at developing backend required by a new bank called "Capital F
   <li>Loans:</li>
   <li>Cards:</li>
 </ol>
-##Entitites:
-Base Entities - createdAt, createdBy, updatedAt, updatedBy
-Customer Enitity - customerId, name, email, mobileNumber
-Accounts Enitity - 
 ##Dependencies usind inside Spring Microservices:
 <ul>
   <li>Spring Actuator</li>
