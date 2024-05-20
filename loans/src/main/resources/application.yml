@@ -4,21 +4,54 @@ spring:
   application:
     name: "loans"
   datasource:
-    url: jdbc:mysql://localhost:3307/loansdb
-    username: root
-    password: root
-  sql:
-    init:
-      mode: always
-    jpa:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: user
+    password: ''
+#    url: jdbc:mysql://localhost:3307/loansdb
+#    username: root
+#    password: root
+#  sql:
+#    init:
+#      mode: always
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
       show-sql: true
+#    show-sql: true
 
   profiles:
     active: "prod"
   config:
     import: "optional:configserver:http://localhost:8071/"
 management:
+  endpoint:
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
   endpoints:
     web:
       exposure:
         include: "*"
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka
+info:
+  app:
+    name: "loans"
+    description: "First Capital Bank Loans Application"
+    version: "1.0.0"
+endpoints:
+  shutdown:
+    enabled: true

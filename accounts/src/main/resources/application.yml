@@ -4,21 +4,54 @@ spring:
   application:
     name: "accounts"
   datasource:
-    url: jdbc:mysql://localhost:3306/accountsdb
-    username: root
-    password: root
-  sql:
-    init:
-      mode: always
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: user
+    password: ''
+  h2:
+    console:
+      enabled: true
+#    url: jdbc:mysql://localhost:3306/accountsdb
+#    username: root
+#    password: root
+#  sql:
+#    init:
+#      mode: always
   jpa:
-    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+#    show-sql: true
 
   profiles:
     active: "prod"
   config:
     import: "optional:configserver:http://localhost:8071/"
 management:
+  endpoint:
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
   endpoints:
     web:
       exposure:
         include: "*"
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka
+info:
+  app:
+    name: "accounts"
+    description: "First Capital Bank Accounts Application"
+    version: "1.0.0"
+endpoints:
+  shutdown:
+    enabled: true
