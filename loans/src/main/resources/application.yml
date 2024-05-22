@@ -55,3 +55,10 @@ info:
 endpoints:
   shutdown:
     enabled: true
+
+logging:
+  level:
+    com:
+      anjali:
+        springboot:
+          loans: DEBUG
