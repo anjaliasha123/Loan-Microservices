@@ -42,8 +42,10 @@ public class CustomerController {
             @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile Number must be 10 digits")
             String mobileNumber
     ){
-        logger.debug("roadMapLearner-correlation-id found {}", correlationId);
+//        logger.debug("roadMapLearner-correlation-id found {}", correlationId);
+        logger.debug("fetch customer details");
         CustomerDetailsDto customerDetailsDto = iCustomerService.fetchCustomerDetails(mobileNumber, correlationId);
+        logger.debug("fetch customer details end");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(customerDetailsDto);
